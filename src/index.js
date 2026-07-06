@@ -1,7 +1,7 @@
 require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
-const { Client, GatewayIntentBits, Collection } = require('discord.js');
+const { Client, GatewayIntentBits, Collection, ActivityType } = require('discord.js');
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
@@ -17,8 +17,25 @@ for (const file of commandFiles) {
   if (command.data) client.commands.set(command.data.name, command);
 }
 
+// Edit this list to whatever you want the bot to rotate through
+const ACTIVITIES = [
+  'Managing sessions',
+  'Helping Staff!',
+  'Created by: krytec_gaming',
+  'Liberty is the best!',
+  'Best new emerging server!',
+];
+let activityIndex = 0;
+
 client.once('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
+
+  const setActivity = () => {
+    client.user.setActivity(ACTIVITIES[activityIndex], { type: ActivityType.Playing });
+    activityIndex = (activityIndex + 1) % ACTIVITIES.length;
+  };
+  setActivity();
+  setInterval(setActivity, 2000);
 });
 
 client.on('interactionCreate', async (interaction) => {
