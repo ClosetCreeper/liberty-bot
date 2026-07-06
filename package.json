@@ -1,0 +1,17 @@
+{
+  "name": "discord-embed-bot",
+  "version": "1.0.0",
+  "description": "Template-driven Discord bot for session/moderation/roleplay commands",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/index.js",
+    "deploy": "node src/deploy-commands.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5",
+    "node-fetch": "^2.7.0"
+  }
+}

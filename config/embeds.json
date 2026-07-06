@@ -1,0 +1,44 @@
+{
+  "ssu": {
+    "title": "Session Started",
+    "description": "The session has started, please join in game!",
+    "color": "#57F287",
+    "banner": ""
+  },
+  "ssd": {
+    "title": "Session Ended",
+    "description": "The session has ended. Thank you for playing!",
+    "color": "#ED4245",
+    "banner": ""
+  },
+  "ssu-boost": {
+    "title": "SSU Boost",
+    "description": "We need more players in-game right now — jump in!",
+    "color": "#FEE75C",
+    "banner": ""
+  },
+  "feedback": {
+    "title": "Feedback",
+    "description": "",
+    "color": "#5865F2",
+    "banner": ""
+  },
+  "promotion": {
+    "title": "Promotion Announcement",
+    "description": "",
+    "color": "#57F287",
+    "banner": ""
+  },
+  "infraction": {
+    "title": "Infraction Logged",
+    "description": "",
+    "color": "#ED4245",
+    "banner": ""
+  },
+  "fastpass": {
+    "title": "Fastpass Request",
+    "description": "",
+    "color": "#5865F2",
+    "banner": ""
+  }
+}
