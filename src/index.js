@@ -23,7 +23,7 @@ require('./features/voiceHub').register(client);
 const ACTIVITIES = [
   'Managing sessions',
   'Logging infractions',
-  'Created by: YourNameHere',
+  'Created by: krytec_gaming',
 ];
 let activityIndex = 0;
 
