@@ -4,7 +4,7 @@ const path = require('path');
 const { Client, GatewayIntentBits, Collection, ActivityType } = require('discord.js');
 
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildVoiceStates],
 });
 
 client.commands = new Collection();
@@ -17,13 +17,13 @@ for (const file of commandFiles) {
   if (command.data) client.commands.set(command.data.name, command);
 }
 
+require('./features/voiceHub').register(client);
+
 // Edit this list to whatever you want the bot to rotate through
 const ACTIVITIES = [
   'Managing sessions',
-  'Helping Staff!',
-  'Created by: krytec_gaming',
-  'Liberty is the best!',
-  'Best new emerging server!',
+  'Logging infractions',
+  'Created by: YourNameHere',
 ];
 let activityIndex = 0;
 
