@@ -21,6 +21,7 @@ const SETTABLE = {
     { key: 'promotion', label: 'Promotion Log' },
     { key: 'infraction', label: 'Infraction Log' },
     { key: 'fastpass', label: 'Fastpass Requests' },
+    { key: 'mod-scene-hub', label: 'Mod Scene Hub (voice channel)', channelKind: 'voice' },
   ],
   role: [
     { key: 'jailed', label: 'Jailed Role' },
