@@ -51,7 +51,8 @@ function fieldScreen(kind) {
 }
 
 function valueScreen(kind, key) {
-  const label = SETTABLE[kind].find((item) => item.key === key)?.label || key;
+  const entry = SETTABLE[kind].find((item) => item.key === key);
+  const label = entry?.label || key;
 
   const embed = new EmbedBuilder()
     .setTitle(label)
@@ -62,12 +63,17 @@ function valueScreen(kind, key) {
         : `Pick the role for **${label}**.`
     );
 
+  const isVoiceChannel = kind === 'channel' && entry?.channelKind === 'voice';
+
   const component =
     kind === 'channel'
       ? new ChannelSelectMenuBuilder()
           .setCustomId(`setup-value-select:channel:${key}`)
           .setPlaceholder('Select a channel')
-          .addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement)
+          .addChannelTypes(
+            isVoiceChannel ? ChannelType.GuildVoice : ChannelType.GuildText,
+            ...(isVoiceChannel ? [] : [ChannelType.GuildAnnouncement])
+          )
       : new RoleSelectMenuBuilder()
           .setCustomId(`setup-value-select:role:${key}`)
           .setPlaceholder('Select a role');
