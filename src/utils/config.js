@@ -22,10 +22,12 @@ const SETTABLE = {
     { key: 'infraction', label: 'Infraction Log' },
     { key: 'fastpass', label: 'Fastpass Requests' },
     { key: 'mod-scene-hub', label: 'Mod Scene Hub (voice channel)', channelKind: 'voice' },
+    { key: 'referral-invite', label: 'Referral Invite Channel' },
   ],
   role: [
     { key: 'jailed', label: 'Jailed Role' },
     { key: 'ssuNotifications', label: 'SSU Notifications Role' },
+    { key: 'referralTracked', label: 'Referral Tracked Role' },
   ],
 };
 

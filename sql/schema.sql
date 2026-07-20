@@ -50,3 +50,29 @@ create table if not exists feedback (
 create index if not exists infractions_user_id_idx on infractions (user_id);
 create index if not exists promotions_user_id_idx on promotions (user_id);
 create index if not exists feedback_target_user_id_idx on feedback (target_user_id);
+
+-- Referral program (ported from msgquota-bot — shares the same Supabase
+-- project, so these tables are the same ones that bot reads/writes).
+
+-- One row per member who has generated a /referrer link
+create table if not exists referrer_invites (
+  user_id text primary key,
+  username text not null,
+  invite_code text not null unique,
+  created_at timestamptz default now()
+);
+
+-- Last known use-count per invite code, so the poller can detect increases
+create table if not exists referrer_invite_snapshot (
+  invite_code text primary key,
+  uses integer not null default 0,
+  updated_at timestamptz default now()
+);
+
+-- Running referral totals per member, shown on /referrer leaderboard
+create table if not exists referrer_counts (
+  user_id text primary key,
+  username text not null,
+  referral_count integer not null default 0,
+  updated_at timestamptz default now()
+);

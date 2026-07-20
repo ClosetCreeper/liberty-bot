@@ -29,6 +29,11 @@ creates:
 - `bot_config` — key/value store for channel + role settings, edited via `/setup`
 - `infractions`, `promotions`, `feedback` — one row per logged action, queried
   by the `list` subcommands
+- `referrer_invites`, `referrer_invite_snapshot`, `referrer_counts` — referral
+  program tables. These are the **same tables msgquota-bot uses** — point
+  `SUPABASE_URL`/`SUPABASE_KEY` at that same project and both bots share one
+  set of referral data. The `create table if not exists` statements are
+  no-ops if msgquota-bot already created them.
 
 Nothing needs to be pre-filled — `/setup` populates `bot_config` for you.
 
@@ -106,7 +111,17 @@ Each entry maps a command to its embed content:
 | `/promotion list user` | Shows a member's promotion history |
 | `/infraction log user type reason` | Logs to Supabase + posts a color-coded embed to the infraction channel |
 | `/infraction list user` | Shows a member's infraction history |
+| `/referrer link` | Creates (or returns) the caller's permanent invite link, requires the Referral Tracked role |
+| `/referrer leaderboard` | Shows top referrers by credited invite joins |
 | `/setup` | Configure channels and roles via dropdowns |
+
+`/referrer` requires two extra `/setup` entries: the **Referral Invite
+Channel** (where invite links are created from) and the **Referral Tracked
+Role** (who's allowed to run `/referrer link`). A background poller checks
+Discord's invite use-counts every 2 minutes and credits `referrer_counts`
+when a tracked invite gets a new use — this requires the `GuildInvites`
+intent, which is already enabled in `src/index.js` (no privileged-intent
+toggle needed in the Developer Portal for it).
 
 > Note: `/feedback`, `/promotion`, and `/infraction` are now **subcommands**
 > (`/feedback submit`, `/promotion give`, `/infraction log`) instead of flat
