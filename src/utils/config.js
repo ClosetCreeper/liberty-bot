@@ -23,6 +23,7 @@ const SETTABLE = {
     { key: 'fastpass', label: 'Fastpass Requests' },
     { key: 'mod-scene-hub', label: 'Mod Scene Hub (voice channel)', channelKind: 'voice' },
     { key: 'referral-invite', label: 'Referral Invite Channel' },
+    { key: 'training-host', label: 'Training Host Announcements' },
   ],
   role: [
     { key: 'jailed', label: 'Jailed Role' },

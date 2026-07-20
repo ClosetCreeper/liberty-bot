@@ -113,6 +113,7 @@ Each entry maps a command to its embed content:
 | `/infraction list user` | Shows a member's infraction history |
 | `/referrer link` | Creates (or returns) the caller's permanent invite link, requires the Referral Tracked role |
 | `/referrer leaderboard` | Shows top referrers by credited invite joins |
+| `/training-host duration when` | Posts a training announcement (host, duration, start time) to the configured channel |
 | `/setup` | Configure channels and roles via dropdowns |
 
 `/referrer` requires two extra `/setup` entries: the **Referral Invite
