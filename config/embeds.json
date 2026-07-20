@@ -40,5 +40,11 @@
     "description": "",
     "color": "#5865F2",
     "banner": ""
+  },
+  "training-host": {
+    "title": "Training Session",
+    "description": "A new training session has been scheduled!",
+    "color": "#5865F2",
+    "banner": ""
   }
 }
